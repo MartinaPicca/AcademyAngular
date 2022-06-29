@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DocenteRoutingModule
+    DocenteRoutingModule,
   ],
   providers: [ ],
 })

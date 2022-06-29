@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { DocenteService } from '../_services/docente.service';
 
 @Component({
   selector: 'app-docente',
@@ -7,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocenteComponent implements OnInit {
 
-  constructor() { }
+  isLoadingData = true;
+  constructor(
+    private docenteService : DocenteService,
+    private ref : ChangeDetectorRef,
+  ) { }
 
   ngOnInit(): void {
+
+    this.getAllDocenti()
     
+  }
+
+  getAllDocenti(){
+    this.docenteService.getAllDocenti()
+    .subscribe(docente => {
+      // console.log(docente)
+      // this.docenti = docente;
+      this.isLoadingData = false;
+      this.ref.detectChanges();
+    })
+
   }
 
 }
